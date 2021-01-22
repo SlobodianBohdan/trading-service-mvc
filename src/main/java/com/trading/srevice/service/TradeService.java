@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TradeService {
 
-    boolean create(Trade trade);
+    Trade create(Trade trade);
 
     boolean update(Trade trade);
 
@@ -16,4 +16,6 @@ public interface TradeService {
     List<Trade> getAll();
 
     Trade getById(Long id);
+
+    List<Trade> getAllByStatus(TradeStatus tradeStatus);
 }
