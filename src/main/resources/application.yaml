@@ -1,3 +1,13 @@
+spring:
+  freemarker:
+    template-loader-path: "classpath:/templates"
+    suffix: ".ftl"
+  security.user:
+    name: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin}
+app:
+  baseUrl: ${APP_BASE_URL:http://localhost:8080}
+  adminPanelUrl: ${ADMIN_PANEL_URL:admin}
 
 # ===============================
 # DATABASE

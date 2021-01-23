@@ -1,13 +1,24 @@
 package com.trading.srevice.exception.handler;
 
 
+import com.trading.srevice.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@RestControllerAdvice
 @Slf4j
+@ControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static final String ERROR = "error";
+    @ExceptionHandler({ServiceException.class})
+    public String handleServiceAdminException(ServiceException serviceException, Model model) {
+
+        log.error("Service exception occurred!", serviceException);
+
+        model.addAttribute("errorMessage", serviceException.getMessage());
+
+        return "main/error";
+    }
 
 }

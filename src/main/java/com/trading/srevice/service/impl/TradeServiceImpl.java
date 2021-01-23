@@ -1,7 +1,6 @@
 package com.trading.srevice.service.impl;
 
-import com.trading.srevice.exception.TradeNotFoundException;
-import com.trading.srevice.exception.UserNotFoundException;
+import com.trading.srevice.exception.ServiceException;
 import com.trading.srevice.model.Trade;
 import com.trading.srevice.model.TradeStatus;
 import com.trading.srevice.repository.TradeRepository;
@@ -25,7 +24,7 @@ public class TradeServiceImpl implements TradeService {
         try {
             return tradeRepository.save(trade);
         }catch (Exception e){
-            throw new TradeNotFoundException("Trade not created!");
+            throw new ServiceException("Trade not created!");
         }
     }
 
@@ -35,7 +34,7 @@ public class TradeServiceImpl implements TradeService {
             findByIdOrThrowException(tradeRepository, trade.getId());
             tradeRepository.save(trade);
             return true;
-        } catch (TradeNotFoundException e) {
+        } catch (ServiceException e) {
             return false;
         }
     }
@@ -43,7 +42,7 @@ public class TradeServiceImpl implements TradeService {
     @Override
     public void updateStatus(Long id, TradeStatus tradeStatus) {
             Trade trade = tradeRepository.getById(id)
-                    .orElseThrow(()->new UserNotFoundException("Trade with isn't found!"));
+                    .orElseThrow(()->new ServiceException("Trade with isn't found!"));
             tradeRepository.save(trade);
     }
 
@@ -52,7 +51,7 @@ public class TradeServiceImpl implements TradeService {
         try {
             return tradeRepository.findAll();
         }catch (Exception e){
-            throw new TradeNotFoundException("Trades not found!");
+            throw new ServiceException("Trades not found!");
         }
     }
 
@@ -61,8 +60,8 @@ public class TradeServiceImpl implements TradeService {
         try {
             findByIdOrThrowException(tradeRepository, id);
             return tradeRepository.getById(id).get();
-        } catch (TradeNotFoundException e) {
-            throw new TradeNotFoundException("Trade not found!");
+        } catch (ServiceException e) {
+            throw new ServiceException("Trade not found!");
         }
     }
 
@@ -71,12 +70,12 @@ public class TradeServiceImpl implements TradeService {
         try {
             return tradeRepository.getByTradeStatus(tradeStatus);
         } catch (Exception e) {
-            throw new TradeNotFoundException("Trade with status " + tradeStatus + " not found!") ;
+            throw new ServiceException("Trade with status " + tradeStatus + " not found!") ;
         }
     }
 
     private <T> T findByIdOrThrowException(JpaRepository<T, Long> repository, Long id) {
-        return repository.findById(id).orElseThrow(() -> new TradeNotFoundException("Entity is not found!"));
+        return repository.findById(id).orElseThrow(() -> new ServiceException("Entity is not found!"));
     }
 
 }

@@ -34,7 +34,6 @@ public class Trade {
     private Timestamp createdDate;
     @UpdateTimestamp
     private Timestamp updatedDate;
-    @ManyToOne
-    private User user;
+
 
 }

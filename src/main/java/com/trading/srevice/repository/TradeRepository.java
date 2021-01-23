@@ -2,7 +2,6 @@ package com.trading.srevice.repository;
 
 import com.trading.srevice.model.Trade;
 import com.trading.srevice.model.TradeStatus;
-import com.trading.srevice.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
