@@ -24,9 +24,11 @@ public class Trade {
     @Column(unique = true)
     private String currencyPair;
     @Enumerated(EnumType.STRING)
+    private TradeType tradeType;
+    @Enumerated(EnumType.STRING)
     private TradeStatus tradeStatus;
     @Enumerated(EnumType.STRING)
-    private TradeType tradeType;
+    private TradeTime tradeTime;
     private String description;
     @Column(columnDefinition="text")
     private String mediaLinks;

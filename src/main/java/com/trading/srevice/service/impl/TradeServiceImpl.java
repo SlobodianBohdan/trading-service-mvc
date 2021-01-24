@@ -3,6 +3,8 @@ package com.trading.srevice.service.impl;
 import com.trading.srevice.exception.ServiceException;
 import com.trading.srevice.model.Trade;
 import com.trading.srevice.model.TradeStatus;
+import com.trading.srevice.model.TradeTime;
+import com.trading.srevice.model.TradeType;
 import com.trading.srevice.repository.TradeRepository;
 import com.trading.srevice.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,8 +76,26 @@ public class TradeServiceImpl implements TradeService {
         }
     }
 
+    @Override
+    public List<Trade> getAllByType(TradeType tradeType) {
+        try {
+            return tradeRepository.getByTradeType(tradeType);
+        } catch (Exception e) {
+            throw new ServiceException("Trade with status " + tradeType + " not found!") ;
+        }
+    }
+
+    @Override
+    public List<Trade> getAllByTime(TradeTime tradeTime) {
+        try {
+            return tradeRepository.getByTradeTime(tradeTime);
+        } catch (Exception e) {
+            throw new ServiceException("Trade with status " + tradeTime + " not found!") ;
+        }
+    }
+
+
     private <T> T findByIdOrThrowException(JpaRepository<T, Long> repository, Long id) {
         return repository.findById(id).orElseThrow(() -> new ServiceException("Entity is not found!"));
     }
-
 }
