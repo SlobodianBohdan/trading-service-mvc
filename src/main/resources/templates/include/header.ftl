@@ -1,7 +1,7 @@
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 <style>
-    *{
+    .header{
         margin: 0;
         padding: 0;
     }
@@ -33,7 +33,7 @@
     }
 
     nav{
-        margin-top: 22px;
+        margin-top: 23px;
         margin-left: 20%;
     }
     .top_nav a{
@@ -96,15 +96,13 @@
 </style>
 
 
-
-<head>
     <header class="header">
         <div class="header_logo">
             <p>Ihor Trade</p>
         </div>
         <nav>
             <div class="top_nav" id="myTopNav">
-                <a href="#">Home</a>
+                <a href="/trade/home">Home</a>
                 <a href="#">About</a>
                 <a href="#">Services</a>
                 <a href="#">Portfolio</a>
@@ -114,6 +112,6 @@
             </div>
         </nav>
     </header>
-    <#include "../include/footer.ftl">
 <body>
+
 
