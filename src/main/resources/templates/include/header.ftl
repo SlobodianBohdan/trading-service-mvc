@@ -1,18 +1,18 @@
+<#include "../include/coreDependencies.ftl">
+
 <html>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 <style>
-    .header{
+    *{
         margin: 0;
         padding: 0;
-    }
-    a{
-        text-decoration: none;
-    }
-    li{
         list-style: none;
     }
     body{
         font-family: 'Open Sans', sans-serif;
+    }
+
+    .aHeader{
+        text-decoration: none;
     }
     .header{
         width: 100%;
@@ -23,7 +23,7 @@
     .header_logo{
         text-transform: uppercase;
         color: #fff;
-        font-weight: 800;
+        font-weight: 600;
         font-size: 24px;
         cursor: pointer;
         margin-right: 20%;
@@ -32,9 +32,9 @@
 
     }
 
-    nav{
+    .navHeader{
         margin-top: 23px;
-        margin-left: 20%;
+        margin-left: 23%;
     }
     .top_nav a{
         color: #fff;
@@ -54,12 +54,12 @@
 
 
     @media screen and (max-width: 1200px){
-        nav{
+        .navHeader{
             margin-left: 20%;
         }
     }
     @media screen and (max-width: 1105px){
-        nav{
+        .navHeader{
             margin-left: 10%;
         }
     }
@@ -76,7 +76,7 @@
             font-size: 25px;
         }
 
-        nav {
+        .navHeader {
             width: 100%;
         }
 
@@ -89,26 +89,26 @@
         .top_nav.responsive a {
             float: none;
             display: block;
-            text-align: left;
+            text-align: center;
         }
     }
 
-</style>
 
+</style>
 
     <header class="header">
         <div class="header_logo">
             <p>Ihor Trade</p>
         </div>
-        <nav>
+        <nav class="navHeader">
             <div class="top_nav" id="myTopNav">
-                <a href="/trade/home">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Portfolio</a>
-                <a href="#">Testimonials</a>
-                <a href="#">Contact</a>
-                <a href="#" id="menu" class="icon">&#9776;</a>
+                <a class="aHeader" href="/trade/home">Home</a>
+                <a class="aHeader" href="/trade/list">Trades</a>
+                <a class="aHeader" href="#">Services</a>
+                <a class="aHeader" href="#">Portfolio</a>
+                <a class="aHeader" href="#">Testimonials</a>
+                <a class="aHeader" href="#">Contact</a>
+                <a id="menu" class="icon">&#9776;</a>
             </div>
         </nav>
     </header>
