@@ -27,7 +27,7 @@ public class TradeDtoMapper{
                 .id(trade.getId())
                 .currencyPair(trade.getCurrencyPair())
                 .tradeType(trade.getTradeType())
-                .tradeType(trade.getTradeType())
+                .tradeTime(trade.getTradeTime())
                 .tradeStatus(trade.getTradeStatus())
                 .description(trade.getDescription())
                 .mediaLinks(trade.getMediaLinks())

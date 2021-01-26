@@ -1,6 +1,17 @@
 <#include "../include/header.ftl">
+    <style>
+        .btnCreate{
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 <main>
 
+        <div class="btnCreate">
+            <a class="btn btn-warning" href="/trade/formCreate" role="button">Create New Trade</a>
+        </div>
 <#--    <#if animals.content[0].animalStatus == "FREE">-->
 <#--        <h1 class="text-center font-italic font-weight-bold font-family">Не купуй - візьми!</h1>-->
 <#--    <#elseif animals.content[0].animalStatus == "TREATMENT">-->
@@ -60,7 +71,7 @@
 <#--        </div>-->
 <#--    </#if>-->
 
-    </div>
+
 
 </main>
 
