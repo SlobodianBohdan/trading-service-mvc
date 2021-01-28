@@ -38,7 +38,7 @@ public class Trade {
     @NonNull
     private String description;
     @Column(columnDefinition="text")
-    private String mediaLinks;
+    private String mediaLink;
     @CreationTimestamp
     private Timestamp createdDate;
     @UpdateTimestamp

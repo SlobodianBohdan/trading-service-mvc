@@ -1,19 +1,20 @@
 <#include "../include/header.ftl">
     <style>
-        .containerForm{
+        .container{
             margin-top: 10%;
             margin-bottom: 10%;
         }
         .card{
         }
     </style>
-<div class="containerForm">
+<div class="container">
     <div class="card mb-2">
         <div class="row justify-content-center mt-2">
             <form action="/trade/new" method="get" autocomplete="off">
                 <h3 class="text-center font-italic font-weight-bold font-family">New Trade</h3>
                 <div class="col-12 block pt-2" style="">
                     <table class="table table-hover">
+
                         <tr>
                             <th class="align-middle col-md-12" scope="row">Currency Pair:</th>
                             <td class="td-padding">
@@ -77,9 +78,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <th class="align-middle col-md-12" scope="row">Media Links:</th>
+                            <th class="align-middle col-md-12" scope="row">Media Link:</th>
                             <td class="td-padding">
-                                <input name="mediaLinks" type="url">
+                                <input name="mediaLink" type="url">
                             </td>
                         </tr>
                         </tbody>

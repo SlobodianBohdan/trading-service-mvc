@@ -15,10 +15,10 @@ public class TradeDtoMapper{
                 .stopLimit(trade.getStopLimit())
                 .targets(trade.getTargets())
                 .tradeType(trade.getTradeType())
-                .tradeType(trade.getTradeType())
+                .tradeTime(trade.getTradeTime())
                 .tradeStatus(trade.getTradeStatus())
                 .description(trade.getDescription())
-                .mediaLinks(trade.getMediaLinks())
+                .mediaLink(trade.getMediaLink())
                 .createdDate(trade.getCreatedDate())
                 .updatedDate(trade.getUpdatedDate())
                 .build();
@@ -36,7 +36,7 @@ public class TradeDtoMapper{
                 .tradeTime(trade.getTradeTime())
                 .tradeStatus(trade.getTradeStatus())
                 .description(trade.getDescription())
-                .mediaLinks(trade.getMediaLinks())
+                .mediaLink(trade.getMediaLink())
                 .createdDate(trade.getCreatedDate())
                 .updatedDate(trade.getUpdatedDate())
                 .build();

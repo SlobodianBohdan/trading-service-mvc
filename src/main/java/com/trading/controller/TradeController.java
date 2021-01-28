@@ -8,12 +8,9 @@ import com.trading.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/trade")
@@ -38,14 +35,12 @@ public class TradeController {
     public String getAll(Model model) {
 //        Page<Animal> animalsPage = animalService.getAllByAnimalStatus(pageNumber, AnimalStatus.FREE);
 //        PageDto animals = this.mapper.toAnimalsPage(animalsPage);
-        List<Trade> trades = tradeService.getAll().stream()
-                .filter(trade -> trade.getTradeStatus().equals(TradeStatus.ACTIVE))
-                .collect(Collectors.toList());
-
+        List<Trade> trades = tradeService.getAllByStatus(TradeStatus.ACTIVE);
         model.addAttribute("trades", trades);
         return "trade/list";
     }
 
+    // Create Trade
     @GetMapping("/formCreate")
     public String getCreateGet() {
         return "trade/formCreate";
@@ -55,5 +50,27 @@ public class TradeController {
     public String create(@ModelAttribute TradeDto tradeDto) {
         tradeService.create(mapper.toEntity(tradeDto));
         return "/trade/home";
+    }
+
+    // Update Trade
+    @GetMapping("/formUpdate/{animalId}")
+    public String getUpdateForm(@PathVariable Long tradeId, Model model) {
+        Trade trade = tradeService.getById(tradeId);
+        model.addAttribute("trade", trade);
+        return "/trade/formUpdate";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute("Trade") Trade trade) {
+        tradeService.update(trade);
+        return String.format("redirect:/trade/%s", trade.getId());
+    }
+
+    // Info Trade
+    @GetMapping("/info/{tradeId}")
+    public String getById(@PathVariable Long tradeId, Model model) {
+        TradeDto tradeDto = mapper.toDto(tradeService.getById(tradeId));
+        model.addAttribute("trade", tradeDto);
+        return "trade/info";
     }
 }

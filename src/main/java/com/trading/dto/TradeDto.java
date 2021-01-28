@@ -36,7 +36,7 @@ public class TradeDto {
     @NotBlank(message = "Created cannot be empty")
     private String description;
     @NotBlank(message = "Created cannot be empty")
-    private String mediaLinks;
+    private String mediaLink;
 
     private Timestamp createdDate;
     private Timestamp updatedDate;

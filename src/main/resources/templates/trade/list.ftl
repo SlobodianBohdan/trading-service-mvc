@@ -8,7 +8,7 @@
         }
     </style>
 <main>
-
+    <div class="container">
         <div class="btnCreate">
             <a class="btn btn-warning" href="/trade/formCreate" role="button">Create New Trade</a>
         </div>
@@ -22,11 +22,11 @@
         <#if trades?size!=0 >
             <div class="row justify-content-center" id="tradeList">
                 <#list trades as trade>
-                    <div class="col-4 clearfix d-none d-md-block mt-5">
+                    <div class="col-4 clearfix d-none d-md-block mt-4">
                         <div class="card mb-2 zoom">
-                            <a href="/trade/${trade.id}">
-                                <#if trade.mediaLinks??>
-                                    <img class="card-img-top card-item-img" src="${trade.mediaLinks}">
+                            <a href="/trade/info/${trade.id}">
+                                <#if trade.mediaLink??>
+                                    <img class="card-img-top card-item-img" src="${trade.mediaLink}">
                                 <#else>
                                     <img class="card-img-top card-item-img" src="https://pixy.org/src/120/1206832.jpg">
                                 </#if>
@@ -71,7 +71,7 @@
 <#--        </div>-->
 <#--    </#if>-->
 
-
+    </div>
 
 </main>
 
