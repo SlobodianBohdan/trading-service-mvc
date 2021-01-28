@@ -22,6 +22,12 @@ public class TradeDto {
     @NotBlank(message = "Created cannot be empty")
     private String currencyPair;
     @NotBlank(message = "Created cannot be empty")
+    private String buyPrice;
+    @NotBlank(message = "Created cannot be empty")
+    private String stopLimit;
+    @NotBlank(message = "Created cannot be empty")
+    private String targets;
+    @NotBlank(message = "Created cannot be empty")
     private TradeType tradeType;
     @NotBlank(message = "Created cannot be empty")
     private TradeStatus tradeStatus;
