@@ -31,46 +31,54 @@
                         </div>
                         <h4 class="card-title text-center">${trade.currencyPair}</h4>
                     </div>
-
-                    <div class="row justify-content-center">
-                        <div class="col-6 block pt-2">
-                            <table class="table table-hover mb-2">
-                                <tbody>
-                                    <tr>
-                                        <th class="align-middle" scope="row">Buy Price:</th>
-                                        <td class="td-padding">${trade.buyPrice}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="align-middle" scope="row">Stop-Limit:</th>
-                                        <td class="td-padding">${trade.stopLimit}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="align-middle" scope="row">Targets:</th>
-                                        <td class="td-padding">${trade.targets}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="align-middle" scope="row">Trade Type:</th>
-                                        <td class="td-padding">${trade.tradeType}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="align-middle" scope="row">Trade Status:</th>
-                                        <td class="td-padding">${trade.tradeStatus}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="align-middle" scope="row">Trade Time:</th>
-                                        <td class="td-padding">${trade.tradeTime}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="align-middle" scope="row">Description:</th>
-                                        <td class="td-padding " >${trade.description}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-6 block pt-2">
+                        <table class="table table-hover mb-2">
+                            <tbody>
+                            <tr>
+                                <th class="align-middle" scope="row">Buy Price:</th>
+                                <td class="td-padding">${trade.buyPrice}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Stop-Limit:</th>
+                                <td class="td-padding">${trade.stopLimit}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Targets:</th>
+                                <td class="td-padding">${trade.targets}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Trade Type:</th>
+                                <td class="td-padding">${trade.tradeType}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Trade Status:</th>
+                                <td class="td-padding">${trade.tradeStatus}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Trade Time:</th>
+                                <td class="td-padding">${trade.tradeTime}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Description:</th>
+                                <td class="td-padding " >${trade.description}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Created Date:</th>
+                                <td class="td-padding">${trade.createdDate}</td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">Updated Date:</th>
+                                <td class="td-padding " >${trade.updatedDate}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="btnInfo">
             <a href="/trade/list" class="rowGoBack ml-1">
                 <button class="btn btn-success text-center" type="submit">Go Back</button>

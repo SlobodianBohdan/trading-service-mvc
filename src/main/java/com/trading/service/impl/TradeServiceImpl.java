@@ -11,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -36,8 +40,22 @@ public class TradeServiceImpl implements TradeService {
     public boolean update(Trade trade) {
         try {
             findByIdOrThrowException(tradeRepository, trade.getId());
-            tradeRepository.save(trade);
+
+            Trade tradeUpdate = tradeRepository.getById(trade.getId()).get();
+            tradeUpdate.setId(trade.getId());
+            tradeUpdate.setCurrencyPair(trade.getCurrencyPair());
+            tradeUpdate.setBuyPrice(trade.getBuyPrice());
+            tradeUpdate.setStopLimit(trade.getStopLimit());
+            tradeUpdate.setTargets(trade.getTargets());
+            tradeUpdate.setTradeType(trade.getTradeType());
+            tradeUpdate.setTradeTime(trade.getTradeTime());
+            tradeUpdate.setTradeStatus(trade.getTradeStatus());
+            tradeUpdate.setDescription(trade.getDescription());
+            tradeUpdate.setMediaLink(trade.getMediaLink());
+            tradeUpdate.setUpdatedDate(Timestamp.valueOf(LocalDateTime.now()));
+            tradeRepository.save(tradeUpdate);
             return true;
+
         } catch (ServiceException e) {
             return false;
         }

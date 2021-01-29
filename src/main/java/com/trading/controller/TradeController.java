@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -46,14 +47,15 @@ public class TradeController {
         return "trade/formCreate";
     }
 
-    @GetMapping("/new")
-    public String create(@ModelAttribute TradeDto tradeDto) {
+    @PostMapping("/new")
+    public String create(@ModelAttribute TradeDto tradeDto, RedirectAttributes redirectAttributes) {
         tradeService.create(mapper.toEntity(tradeDto));
-        return "/trade/home";
+        redirectAttributes.addFlashAttribute("message", "Created new Trade!");
+        return "redirect:/trade/list";
     }
 
     // Update Trade
-    @GetMapping("/formUpdate/{animalId}")
+    @GetMapping("/formUpdate/{tradeId}")
     public String getUpdateForm(@PathVariable Long tradeId, Model model) {
         Trade trade = tradeService.getById(tradeId);
         model.addAttribute("trade", trade);
@@ -61,9 +63,11 @@ public class TradeController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute("Trade") Trade trade) {
+    public String update(@ModelAttribute TradeDto tradeDto, RedirectAttributes redirectAttributes) {
+        Trade trade = mapper.toEntity(tradeDto);
         tradeService.update(trade);
-        return String.format("redirect:/trade/%s", trade.getId());
+        redirectAttributes.addFlashAttribute("message", "Update this Trade!");
+        return String.format("redirect:/trade/formUpdate/%s", trade.getId());
     }
 
     // Info Trade

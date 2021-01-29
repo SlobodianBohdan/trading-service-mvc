@@ -6,12 +6,20 @@
             align-items: center;
             justify-content: center;
         }
+        .alert{
+            margin-top: 3%;
+        }
     </style>
 <main>
     <div class="container">
         <div class="btnCreate">
             <a class="btn btn-warning" href="/trade/formCreate" role="button">Create New Trade</a>
         </div>
+        <#if message??>
+            <div class="alert alert-success" role="alert" id="dangerAlert">
+                ${message}
+            </div>
+        </#if>
 <#--    <#if animals.content[0].animalStatus == "FREE">-->
 <#--        <h1 class="text-center font-italic font-weight-bold font-family">Не купуй - візьми!</h1>-->
 <#--    <#elseif animals.content[0].animalStatus == "TREATMENT">-->
@@ -72,7 +80,11 @@
 <#--    </#if>-->
 
     </div>
-
 </main>
-
+<script>
+    //alert closing
+    setTimeout(function () {
+        $('#dangerAlert').alert('close');
+    }, 5000);
+</script>
 <#include "../include/footer.ftl">
