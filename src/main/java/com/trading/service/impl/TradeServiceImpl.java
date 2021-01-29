@@ -8,6 +8,10 @@ import com.trading.model.TradeTime;
 import com.trading.model.TradeType;
 import com.trading.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +25,9 @@ import java.util.List;
 public class TradeServiceImpl implements TradeService {
 
     private TradeRepository tradeRepository;
+
+    private static final int PAGE_SIZE = 3;
+    private static final Sort SORT = Sort.by("updatedDate").descending();
 
     @Autowired
     public TradeServiceImpl(TradeRepository tradeRepository) {
@@ -88,9 +95,10 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public List<Trade> getAllByStatus(TradeStatus tradeStatus) {
+    public Page<Trade> getAllByStatus(int pageNumber, TradeStatus tradeStatus) {
         try {
-            return tradeRepository.getByTradeStatus(tradeStatus);
+            Pageable pageable = createPageable(pageNumber);
+            return tradeRepository.findAllByTradeStatus(tradeStatus, pageable);
         } catch (Exception e) {
             throw new ServiceException("Trade with status " + tradeStatus + " not found!") ;
         }
@@ -114,6 +122,14 @@ public class TradeServiceImpl implements TradeService {
         }
     }
 
+    private Pageable createPageable(int pageNumber) {
+
+        if (pageNumber < 1) {
+            throw new ServiceException("Incorrect page number!");
+        }
+
+        return PageRequest.of(pageNumber - 1, PAGE_SIZE, SORT);
+    }
 
     private <T> T findByIdOrThrowException(JpaRepository<T, Long> repository, Long id) {
         return repository.findById(id).orElseThrow(() -> new ServiceException("Entity is not found!"));

@@ -4,7 +4,8 @@
             margin-top: 10%;
             margin-bottom: 10%;
         }
-        .card{
+        .btnGoBack{
+            padding-right: 10px;
         }
     </style>
 <div class="container">
@@ -86,7 +87,10 @@
                         </tbody>
                     </table>
                     <fieldset class="row justify-content-center tm-10 ">
-                        <button name="Submit" type="submit" class="col-4 btn btn-primary text-center submitBtn" data-submit="...Sending">
+                        <div class="btnGoBack">
+                            <a class="btn btn-success" href="/trade/list" >Go Back</a>
+                        </div>
+                        <button name="Submit" type="submit" class="btn btn-warning" data-submit="...Sending">
                             Create
                         </button>
                     </fieldset>

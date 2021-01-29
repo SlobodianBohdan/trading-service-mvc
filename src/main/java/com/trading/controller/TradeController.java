@@ -1,11 +1,13 @@
 package com.trading.controller;
 
+import com.trading.dto.PageDto;
 import com.trading.dto.TradeDto;
 import com.trading.mapper.TradeDtoMapper;
 import com.trading.model.Trade;
 import com.trading.model.TradeStatus;
 import com.trading.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,17 +35,16 @@ public class TradeController {
     }
 
     @GetMapping({"/list"})
-    public String getAll(Model model) {
-//        Page<Animal> animalsPage = animalService.getAllByAnimalStatus(pageNumber, AnimalStatus.FREE);
-//        PageDto animals = this.mapper.toAnimalsPage(animalsPage);
-        List<Trade> trades = tradeService.getAllByStatus(TradeStatus.ACTIVE);
+    public String getAllActiveTrades(@RequestParam(name = "page", required = false, defaultValue = "1") int pageNumber, Model model) {
+        Page<Trade> tradesPage = tradeService.getAllByStatus(pageNumber, TradeStatus.ACTIVE);
+        PageDto trades = this.mapper.toTradesPage(tradesPage);
         model.addAttribute("trades", trades);
         return "trade/list";
     }
 
     // Create Trade
     @GetMapping("/formCreate")
-    public String getCreateGet() {
+    public String getCreateForm() {
         return "trade/formCreate";
     }
 

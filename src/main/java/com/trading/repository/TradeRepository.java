@@ -4,6 +4,8 @@ import com.trading.model.Trade;
 import com.trading.model.TradeStatus;
 import com.trading.model.TradeTime;
 import com.trading.model.TradeType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -14,7 +16,7 @@ public interface TradeRepository extends JpaRepository<Trade, Long> {
 
     Optional<Trade> getById(Long id);
 
-    List<Trade> getByTradeStatus(TradeStatus tradeStatus);
+    Page<Trade> findAllByTradeStatus(TradeStatus tradeStatus, Pageable pageable);
 
     List<Trade> getByTradeType(TradeType tradeType);
 
