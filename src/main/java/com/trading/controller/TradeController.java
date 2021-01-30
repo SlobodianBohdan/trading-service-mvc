@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/trade")
 public class TradeController {
@@ -77,5 +75,12 @@ public class TradeController {
         TradeDto tradeDto = mapper.toDto(tradeService.getById(tradeId));
         model.addAttribute("trade", tradeDto);
         return "trade/info";
+    }
+
+    // Delete Trade
+    @GetMapping("/delete/{tradeId}")
+    public String delete(@PathVariable Long tradeId, RedirectAttributes redirectAttributes) {
+        tradeService.deleteTradeById(tradeId);
+        return "redirect:/trade/list";
     }
 }

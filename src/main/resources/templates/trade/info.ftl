@@ -9,10 +9,7 @@
         align-items: center;
         justify-content: center;
     }
-    .rowGoBack{
-        margin: 10px 10px 10px 10px;
-    }
-    .rowUpdate{
+    .rowButton{
         margin: 10px 10px 10px 10px;
     }
 </style>
@@ -80,11 +77,14 @@
         </div>
 
         <div class="btnInfo">
-            <a href="/trade/list" class="rowGoBack ml-1">
+            <a href="/trade/list" class="rowButton ml-1">
                 <button class="btn btn-success text-center" type="submit">Go Back</button>
             </a>
-            <a href="/trade/formUpdate/${trade.id}" class="rowUpdate ml-1">
+            <a href="/trade/formUpdate/${trade.id}" class="rowButton ml-1">
                 <button class="btn btn-warning text-center" type="submit">Update trade</button>
+            </a>
+            <a href="/trade/delete/${trade.id}" class="rowButton ml-1" >
+                <button class="btn btn-danger text-center" type="submit" >Delete</button>
             </a>
         </div>
     </div>

@@ -18,8 +18,8 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TradeServiceImpl implements TradeService {
@@ -35,16 +35,16 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public Trade create(Trade trade) {
+    public void create(Trade trade) {
         try {
-            return tradeRepository.save(trade);
+            tradeRepository.save(trade);
         }catch (Exception e){
             throw new ServiceException("Trade not created!");
         }
     }
 
     @Override
-    public boolean update(Trade trade) {
+    public void update(Trade trade) {
         try {
             findByIdOrThrowException(tradeRepository, trade.getId());
 
@@ -61,10 +61,9 @@ public class TradeServiceImpl implements TradeService {
             tradeUpdate.setMediaLink(trade.getMediaLink());
             tradeUpdate.setUpdatedDate(Timestamp.valueOf(LocalDateTime.now()));
             tradeRepository.save(tradeUpdate);
-            return true;
 
         } catch (ServiceException e) {
-            return false;
+            throw new ServiceException("Trades not update!");
         }
     }
 
@@ -119,6 +118,16 @@ public class TradeServiceImpl implements TradeService {
             return tradeRepository.getByTradeTime(tradeTime);
         } catch (Exception e) {
             throw new ServiceException("Trade with status " + tradeTime + " not found!") ;
+        }
+    }
+
+    @Override
+    public void deleteTradeById(Long id) {
+        try {
+            findByIdOrThrowException(tradeRepository, id);
+            tradeRepository.deleteById(id);
+        } catch (ServiceException e) {
+            throw new ServiceException("Trade not delete!");
         }
     }
 

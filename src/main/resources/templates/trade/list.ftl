@@ -30,14 +30,17 @@
                         <div class="card mb-2 zoom">
                             <a href="/trade/info/${trade.id}">
                                 <#if trade.mediaLink??>
-                                    <img class="card-img-top card-item-img" src="${trade.mediaLink}">
+                                    <img class="card-img-top card-item-img" src="${trade.mediaLink}" alt="mediaLinkPhoto">
                                 <#else>
-                                    <img class="card-img-top card-item-img" src="https://pixy.org/src/120/1206832.jpg">
+                                    <img class="card-img-top card-item-img" src="https://pixy.org/src/120/1206832.jpg" alt="additionalPhoto">
                                 </#if>
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">${trade.currencyPair}</h4>
-                                <p class="card-text">${trade.description}</p>
+                                <p class="card-text">Buy Price: ${trade.buyPrice}</p>
+                                <p class="card-text">Stop-Limit: ${trade.stopLimit}</p>
+                                <p class="card-text">Targets: ${trade.targets}</p>
+                                <p class="card-text">Trade Type: ${trade.tradeType}</p>
                             </div>
                         </div>
                     </div>

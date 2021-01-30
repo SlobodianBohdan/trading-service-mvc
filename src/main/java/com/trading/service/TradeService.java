@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface TradeService {
 
-    Trade create(Trade trade);
+    void create(Trade trade);
 
-    boolean update(Trade trade);
+    void update(Trade trade);
 
     void updateStatus(Long id, TradeStatus tradeStatus);
 
@@ -25,4 +25,6 @@ public interface TradeService {
     List<Trade> getAllByType(TradeType tradeType);
 
     List<Trade> getAllByTime(TradeTime tradeTime);
+
+    void deleteTradeById(Long id);
 }
