@@ -72,6 +72,10 @@
                                 <input type="text" name="targets" value="${trade.targets}">
                             </fieldset>
                             <fieldset class="scheduler-border">
+                                <label class="scheduler-border">Expected Result:</label>
+                                <input type="text" name="expectedResult" value="${trade.expectedResult}">
+                            </fieldset>
+                            <fieldset class="scheduler-border">
                                 <label class="scheduler-border" scope="row">Trade Type:</label>
                                 <select class="inputValue" name="tradeType" required>
                                     <option name="tradeType">${trade.tradeType}</option>

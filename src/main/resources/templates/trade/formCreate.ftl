@@ -41,6 +41,12 @@
                             </td>
                         </tr>
                         <tr>
+                            <th class="align-middle col-md-12" scope="row">Expected Result:</th>
+                            <td class="td-padding">
+                                <input name="expectedResult" type="text">
+                            </td>
+                        </tr>
+                        <tr>
                             <th class="align-middle col-md-12" scope="row">Description:</th>
                             <td class="td-padding">
                                 <input name="description" type="text">

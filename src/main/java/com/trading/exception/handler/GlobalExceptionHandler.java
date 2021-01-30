@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
 
         model.addAttribute("errorMessage", serviceException.getMessage());
 
-        return "main/error";
+        return "trade/error";
     }
 
 }

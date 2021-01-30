@@ -54,6 +54,7 @@ public class TradeServiceImpl implements TradeService {
             tradeUpdate.setBuyPrice(trade.getBuyPrice());
             tradeUpdate.setStopLimit(trade.getStopLimit());
             tradeUpdate.setTargets(trade.getTargets());
+            tradeUpdate.setExpectedResult(trade.getExpectedResult());
             tradeUpdate.setTradeType(trade.getTradeType());
             tradeUpdate.setTradeTime(trade.getTradeTime());
             tradeUpdate.setTradeStatus(trade.getTradeStatus());

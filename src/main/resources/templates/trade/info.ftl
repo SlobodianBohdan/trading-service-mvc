@@ -46,6 +46,10 @@
                                 <td class="td-padding">${trade.targets}</td>
                             </tr>
                             <tr>
+                                <th class="align-middle" scope="row">Expected Result:</th>
+                                <td class="td-padding">${trade.expectedResult}</td>
+                            </tr>
+                            <tr>
                                 <th class="align-middle" scope="row">Trade Type:</th>
                                 <td class="td-padding">${trade.tradeType}</td>
                             </tr>

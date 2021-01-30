@@ -28,6 +28,8 @@ public class TradeDto {
     @NotBlank(message = "Created cannot be empty")
     private String targets;
     @NotBlank(message = "Created cannot be empty")
+    private String expectedResult;
+    @NotBlank(message = "Created cannot be empty")
     private TradeType tradeType;
     @NotBlank(message = "Created cannot be empty")
     private TradeStatus tradeStatus;

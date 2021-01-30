@@ -29,6 +29,8 @@ public class Trade {
     private String stopLimit;
     @NonNull
     private String targets;
+    @NonNull
+    private String expectedResult;
     @Enumerated(EnumType.STRING)
     private TradeType tradeType;
     @Enumerated(EnumType.STRING)
