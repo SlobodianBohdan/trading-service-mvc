@@ -1,11 +1,11 @@
 package com.trading.service.impl;
 
-import com.trading.repository.TradeRepository;
 import com.trading.exception.ServiceException;
 import com.trading.model.Trade;
 import com.trading.model.TradeStatus;
 import com.trading.model.TradeTime;
 import com.trading.model.TradeType;
+import com.trading.repository.TradeRepository;
 import com.trading.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,11 +15,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TradeServiceImpl implements TradeService {

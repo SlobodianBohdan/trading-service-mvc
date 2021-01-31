@@ -3,6 +3,7 @@ package com.trading.model;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

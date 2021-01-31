@@ -19,7 +19,7 @@
                         <tr>
                             <th class="align-middle col-md-12" scope="row">Currency Pair:</th>
                             <td class="td-padding">
-                                <input name="currencyPair" type="text"/>
+                                <input name="currencyPair" type="text" required/>
                             </td>
                         </tr>
                         <tr>
@@ -106,4 +106,7 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>
 <#include "../include/footer.ftl">

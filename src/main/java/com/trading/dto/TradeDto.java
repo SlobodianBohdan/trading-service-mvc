@@ -7,13 +7,12 @@ import com.trading.model.TradeType;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Builder
 @ToString
 public class TradeDto {
@@ -29,11 +28,11 @@ public class TradeDto {
     private String targets;
     @NotBlank(message = "Created cannot be empty")
     private String expectedResult;
-    @NotBlank(message = "Created cannot be empty")
+    @NotNull
     private TradeType tradeType;
-    @NotBlank(message = "Created cannot be empty")
+    @NotNull
     private TradeStatus tradeStatus;
-    @NotBlank(message = "Created cannot be empty")
+    @NotNull
     private TradeTime tradeTime;
     @NotBlank(message = "Created cannot be empty")
     private String description;

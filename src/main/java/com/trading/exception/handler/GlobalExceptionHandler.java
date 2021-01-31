@@ -12,13 +12,24 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler({ServiceException.class})
-    public String handleServiceAdminException(ServiceException serviceException, Model model) {
+    public String handleServiceException(ServiceException serviceException, Model model) {
 
         log.error("Service exception occurred!", serviceException);
 
         model.addAttribute("errorMessage", serviceException.getMessage());
 
-        return "trade/error";
+        return "main/error";
+    }
+
+
+    @ExceptionHandler({RuntimeException.class})
+    public String handleRuntimeException(RuntimeException runtimeException, Model model) {
+
+        log.error("Service exception occurred!", runtimeException);
+
+        model.addAttribute("errorMessage", "An error has occurred!");
+
+        return "main/error";
     }
 
 }
