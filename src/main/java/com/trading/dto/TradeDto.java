@@ -30,7 +30,7 @@ public class TradeDto {
     private String expectedResult;
     @NotNull
     private TradeType tradeType;
-    @NotNull
+
     private TradeStatus tradeStatus;
     @NotNull
     private TradeTime tradeTime;

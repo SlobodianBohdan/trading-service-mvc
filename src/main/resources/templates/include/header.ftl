@@ -102,7 +102,7 @@
         </div>
         <nav class="navHeader">
             <div class="top_nav" id="myTopNav">
-                <a class="aHeader" href="/trade/home">Home</a>
+                <a class="aHeader" href="/">Home</a>
                 <a class="aHeader" href="/trade/list">Trades</a>
                 <a class="aHeader" href="/trade/archive">Archive</a>
                 <a class="aHeader" href="#">Portfolio</a>

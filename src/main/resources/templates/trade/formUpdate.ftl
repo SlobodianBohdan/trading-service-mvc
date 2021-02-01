@@ -52,28 +52,34 @@
                     <table class="table table-hover mb-0">
                         <tbody>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Id:</label>
-                                <input type="text" name="id" value="${trade.id}" readonly>
+                                <label class="scheduler-border">Id:
+                                    <input class="text-center" type="text" name="id" value="${trade.id}" readonly>
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Currency Pair:</label>
-                                <input type="text" name="currencyPair" value="${trade.currencyPair}">
+                                <label class="scheduler-border">Currency Pair:
+                                    <input type="text" name="currencyPair" value="${trade.currencyPair}">
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Buy Price:</label>
-                                <input type="text" name="buyPrice" value="${trade.buyPrice}">
+                                <label class="scheduler-border">Buy Price:
+                                    <input type="text" name="buyPrice" value="${trade.buyPrice}">
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Stop-Limit:</label>
-                                <input type="text" name="stopLimit" value="${trade.stopLimit}">
+                                <label class="scheduler-border">Stop-Limit:
+                                    <input type="text" name="stopLimit" value="${trade.stopLimit}">
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Targets:</label>
-                                <input type="text" name="targets" value="${trade.targets}">
+                                <label class="scheduler-border">Targets:
+                                    <input type="text" name="targets" value="${trade.targets}">
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Expected Result:</label>
-                                <input type="text" name="expectedResult" value="${trade.expectedResult}">
+                                <label class="scheduler-border">Expected Result:
+                                    <input type="text" name="expectedResult" value="${trade.expectedResult}">
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
                                 <label class="scheduler-border" scope="row">Trade Type:</label>
@@ -93,29 +99,24 @@
                                 </select>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border" scope="row">Trade Status:</label>
-                                <select class="scheduler-border" name="tradeStatus" required>
-                                    <option name="tradeStatus">${trade.tradeStatus}</option>
-                                    <option>ACTIVE</option>
-                                    <option>COMPLETED_PLUS</option>
-                                    <option>COMPLETED_MINUS</option>
-                                </select>
+                                <label class="scheduler-border">Description:
+                                    <input type="text" name="description" value="${trade.description}">
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Description:</label>
-                                <input type="text" name="description" value="${trade.description}">
+                                <label class="scheduler-border">Media Link:
+                                    <input type="url" name="mediaLink" value="${trade.mediaLink}">
+                                </label>
                             </fieldset>
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Media Link:</label>
-                                <input type="url" name="mediaLink" value="${trade.mediaLink}">
-                            </fieldset>
-                            <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Created Date:</label>
-                                <input type="text" value="${trade.createdDate}">
+                                <label class="scheduler-border">Created Date:
+                                    <input type="text" value="${trade.createdDate}">
+                                </label>
                             </fieldset >
                             <fieldset class="scheduler-border">
-                                <label class="scheduler-border">Updated Date:</label>
-                                <input type="text" value="${trade.updatedDate}">
+                                <label class="scheduler-border">Updated Date:
+                                    <input type="text" value="${trade.updatedDate}">
+                                </label>
                             </fieldset>
                         </tbody>
                             <fieldset class="btnUpdate justify-content-center tm-10">

@@ -3,25 +3,26 @@ package com.trading.mapper;
 import com.trading.dto.PageDto;
 import com.trading.dto.TradeDto;
 import com.trading.model.Trade;
+import com.trading.model.TradeStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 @Component
-public class TradeDtoMapper{
+public class TradeDtoMapper {
 
     public TradeDto toDto(Trade trade) {
         return TradeDto.builder()
                 .id(trade.getId())
-                .currencyPair(trade.getCurrencyPair())
+                .currencyPair(trade.getCurrencyPair().toUpperCase())
                 .buyPrice(trade.getBuyPrice())
                 .stopLimit(trade.getStopLimit())
                 .targets(trade.getTargets())
                 .expectedResult(trade.getExpectedResult())
                 .tradeType(trade.getTradeType())
                 .tradeTime(trade.getTradeTime())
-                .tradeStatus(trade.getTradeStatus())
+                .tradeStatus(checkTradeStatus(trade.getTradeStatus()))
                 .description(trade.getDescription())
                 .mediaLink(trade.getMediaLink())
                 .createdDate(trade.getCreatedDate())
@@ -33,14 +34,14 @@ public class TradeDtoMapper{
     public Trade toEntity(TradeDto trade) {
         return Trade.builder()
                 .id(trade.getId())
-                .currencyPair(trade.getCurrencyPair())
+                .currencyPair(trade.getCurrencyPair().toUpperCase())
                 .buyPrice(trade.getBuyPrice())
                 .stopLimit(trade.getStopLimit())
                 .targets(trade.getTargets())
                 .expectedResult(trade.getExpectedResult())
                 .tradeType(trade.getTradeType())
                 .tradeTime(trade.getTradeTime())
-                .tradeStatus(trade.getTradeStatus())
+                .tradeStatus(checkTradeStatus(trade.getTradeStatus()))
                 .description(trade.getDescription())
                 .mediaLink(trade.getMediaLink())
                 .createdDate(trade.getCreatedDate())
@@ -59,6 +60,9 @@ public class TradeDtoMapper{
                 .hasNextPage(tradesPage.hasNext())
                 .hasPreviousPage(tradesPage.hasPrevious())
                 .build();
+    }
 
+    private TradeStatus checkTradeStatus(TradeStatus tradeStatus) {
+        return tradeStatus == null ? TradeStatus.ACTIVE : tradeStatus;
     }
 }

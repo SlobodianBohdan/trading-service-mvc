@@ -4,7 +4,6 @@ import com.trading.exception.ServiceException;
 import com.trading.model.Trade;
 import com.trading.model.TradeStatus;
 import com.trading.model.TradeTime;
-import com.trading.model.TradeType;
 import com.trading.repository.TradeRepository;
 import com.trading.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,7 +36,7 @@ public class TradeServiceImpl implements TradeService {
     public void create(Trade trade) {
         try {
             tradeRepository.save(trade);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ServiceException("Trade not created!");
         }
     }
@@ -67,17 +67,25 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public void updateStatus(Long id, TradeStatus tradeStatus) {
-            Trade trade = tradeRepository.getById(id)
-                    .orElseThrow(()->new ServiceException("Trade with isn't found!"));
+    public void updateStatus(Long tradeId, String result) {
+        try {
+            findByIdOrThrowException(tradeRepository, tradeId);
+            Trade trade = tradeRepository.getById(tradeId).get();
+
+            trade.setExpectedResult(result);
+            trade.setTradeStatus(result.charAt(0) == '+' ?
+                    TradeStatus.COMPLETED_PLUS : TradeStatus.COMPLETED_MINUS);
             tradeRepository.save(trade);
+        } catch (ServiceException e) {
+            throw new ServiceException("Not update trade status!");
+        }
     }
 
     @Override
     public List<Trade> getAll() {
         try {
             return tradeRepository.findAll();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ServiceException("Trades not found!");
         }
     }
@@ -98,25 +106,31 @@ public class TradeServiceImpl implements TradeService {
             Pageable pageable = createPageable(pageNumber);
             return tradeRepository.findAllByTradeStatus(tradeStatus, pageable);
         } catch (Exception e) {
-            throw new ServiceException("Trade with status " + tradeStatus + " not found!") ;
+            throw new ServiceException("Trade with status " + tradeStatus + " not found!");
         }
     }
 
     @Override
-    public List<Trade> getAllByType(TradeType tradeType) {
+    public Page<Trade> getAllWithArchive(int pageNumber) {
         try {
-            return tradeRepository.getByTradeType(tradeType);
+            Pageable pageable = createPageable(pageNumber);
+            List<TradeStatus> tradeStatuses = Arrays.asList(TradeStatus.COMPLETED_PLUS,
+                    TradeStatus.COMPLETED_MINUS);
+            return tradeRepository.findAllByTradeStatusIn(tradeStatuses, pageable);
         } catch (Exception e) {
-            throw new ServiceException("Trade with status " + tradeType + " not found!") ;
+            throw new ServiceException("Trade in archive not found!");
         }
     }
 
     @Override
-    public List<Trade> getAllByTime(TradeTime tradeTime) {
+    public Page<Trade> findAllByCurrencyPair(int pageNumber, String nameQuery) {
         try {
-            return tradeRepository.getByTradeTime(tradeTime);
+            Pageable pageable = createPageable(pageNumber);
+            List<TradeStatus> tradeStatuses = Arrays.asList(TradeStatus.COMPLETED_PLUS,
+                    TradeStatus.COMPLETED_MINUS);
+            return tradeRepository.findAllByCurrencyPairAndTradeStatusIn(nameQuery, tradeStatuses, pageable);
         } catch (Exception e) {
-            throw new ServiceException("Trade with status " + tradeTime + " not found!") ;
+            throw new ServiceException("Currency pair not found!");
         }
     }
 

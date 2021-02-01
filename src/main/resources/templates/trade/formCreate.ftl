@@ -15,7 +15,6 @@
                 <h3 class="text-center font-italic font-weight-bold font-family">New Trade</h3>
                 <div class="col-12 block pt-2">
                     <table class="table table-hover">
-
                         <tr>
                             <th class="align-middle col-md-12" scope="row">Currency Pair:</th>
                             <td class="td-padding">
@@ -74,23 +73,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <th class="align-middle" scope="row">Trade Status:</th>
-                            <td class="td-padding">
-                                <select class="select-program col-md-12" name="tradeStatus" required>
-                                    <option name="tradeStatus" disabled selected>Trade Status</option>
-                                    <option>ACTIVE</option>
-                                    <option>COMPLETED_PLUS</option>
-                                    <option>COMPLETED_MINUS</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
                             <th class="align-middle col-md-12" scope="row">Media Link:</th>
                             <td class="td-padding">
                                 <input name="mediaLink" type="url">
                             </td>
                         </tr>
-                        </tbody>
                     </table>
                     <fieldset class="row justify-content-center tm-10 ">
                         <div class="btnGoBack">

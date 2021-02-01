@@ -87,32 +87,44 @@
             <a href="/trade/formUpdate/${trade.id}" class="rowButton ml-1">
                 <button class="btn btn-warning text-center" type="submit">Update trade</button>
             </a>
-            <a href="/trade/delete/${trade.id}" class="rowButton ml-1" >
+            <form class="rowButton ml-1" action="/trade/delete/${trade.id}" method="post" autocomplete="off">
                 <button class="btn btn-danger text-center" type="submit" >Delete</button>
-            </a>
-<#--            <!-- Trigger the modal with a button &ndash;&gt;-->
-<#--            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </form>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">In Archive</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Expected Result</h4>
+                </div>
+                <form action="/trade/archive/${trade.id}" method="post" autocomplete="off">
+                        <table class="table table-hover">
+                            <tr>
+                                <th class="align-middle col-md-12" scope="row">Expected Result:</th>
+                                <td class="td-padding">
+                                    <label>
+                                        <input name="expectedResult" type="text" value="${trade.expectedResult}">
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                        <fieldset class="row justify-content-center tm-10 ">
+                            <button name="Submit" type="submit" class="btn btn-default" data-submit="...Sending">
+                                In Archive
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </fieldset>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                </form>
+            </div>
         </div>
     </div>
 </main>
-<#--<!-- Modal &ndash;&gt;-->
-<#--<div id="myModal" class="modal fade" role="dialog">-->
-<#--    <div class="modal-dialog">-->
-
-<#--        <!-- Modal content&ndash;&gt;-->
-<#--        <div class="modal-content">-->
-<#--            <div class="modal-header">-->
-<#--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<#--                <h4 class="modal-title">Modal Header</h4>-->
-<#--            </div>-->
-<#--            <div class="modal-body">-->
-<#--                <p>Some text in the modal.</p>-->
-<#--            </div>-->
-<#--            <div class="modal-footer">-->
-<#--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-<#--            </div>-->
-<#--        </div>-->
-
-<#--    </div>-->
-<#--</div>-->
 <#include "../include/footer.ftl">

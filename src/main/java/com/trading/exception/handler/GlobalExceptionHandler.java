@@ -21,6 +21,16 @@ public class GlobalExceptionHandler {
         return "main/error";
     }
 
+    @ExceptionHandler({Exception.class})
+    public String handleServiceException(Exception exception, Model model) {
+
+        log.error("Service exception occurred!", exception);
+
+        model.addAttribute("errorMessage", exception.getMessage());
+
+        return "main/error";
+    }
+
 
     @ExceptionHandler({RuntimeException.class})
     public String handleRuntimeException(RuntimeException runtimeException, Model model) {
