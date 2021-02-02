@@ -9,17 +9,12 @@ import com.trading.model.TradeStatus;
 import com.trading.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -97,7 +92,7 @@ public class TradeController {
     //Send in archive trade
     @PostMapping("/archive/{tradeId}")
     public String sendInArchiveTrade(@PathVariable("tradeId") Long tradeId, @Valid ResultDto result, RedirectAttributes redirectAttributes) {
-        tradeService.updateStatus(tradeId, result.getExpectedResult());
+        tradeService.changeStatusFotTrade(tradeId, result.getExpectedResult());
         redirectAttributes.addFlashAttribute("message", "Trade sent to archive!");
         return "redirect:/trade/list";
     }
@@ -111,12 +106,25 @@ public class TradeController {
         return "trade/archive";
     }
 
-//    @GetMapping("/find")
-//    public String getAllByCurrencyPair (@RequestParam(name = "page", required = false, defaultValue = "1") int pageNumber,
-//                                 @ModelAttribute("name") String nameQuery, Model model) {
-//        Page<Trade> tradesPage = tradeService.findAllByCurrencyPair(pageNumber, nameQuery);
-//        PageDto trades = this.mapper.toTradesPage(tradesPage);
-//        model.addAttribute("trades", trades);
-//        return "trade/archive";
-//    }
+    @GetMapping("/findArchive")
+    public String findAllArchive (
+            @RequestParam(name = "page", required = false, defaultValue = "1") int pageNumber,
+            @RequestParam String currencyPair, Model model) {
+        Page<Trade> tradesPage = tradeService.findAllByCurrencyPairArchive(pageNumber, currencyPair);
+        PageDto trades = this.mapper.toTradesPage(tradesPage);
+        model.addAttribute("trades", trades);
+        model.addAttribute("currencyPair", currencyPair);
+        return "trade/archive";
+    }
+
+    @GetMapping("/findList")
+    public String findAllList (
+            @RequestParam(name = "page", required = false, defaultValue = "1") int pageNumber,
+            @RequestParam String currencyPair, Model model) {
+        Page<Trade> tradesPage = tradeService.findAllByCurrencyPairList(pageNumber, currencyPair);
+        PageDto trades = this.mapper.toTradesPage(tradesPage);
+        model.addAttribute("trades", trades);
+        model.addAttribute("currencyPair", currencyPair);
+        return "trade/list";
+    }
 }

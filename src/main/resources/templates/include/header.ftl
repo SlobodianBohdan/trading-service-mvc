@@ -105,9 +105,8 @@
                 <a class="aHeader" href="/">Home</a>
                 <a class="aHeader" href="/trade/list">Trades</a>
                 <a class="aHeader" href="/trade/archive">Archive</a>
-                <a class="aHeader" href="#">Portfolio</a>
-                <a class="aHeader" href="#">Testimonials</a>
-                <a class="aHeader" href="#">Contact</a>
+                <a class="aHeader" href="#">Fond</a>
+                <a class="aHeader" href="/trade/progress">Progress</a>
                 <a id="menu" class="icon">&#9776;</a>
             </div>
         </nav>

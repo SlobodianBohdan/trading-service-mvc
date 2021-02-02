@@ -67,7 +67,7 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public void updateStatus(Long tradeId, String result) {
+    public void changeStatusFotTrade(Long tradeId, String result) {
         try {
             findByIdOrThrowException(tradeRepository, tradeId);
             Trade trade = tradeRepository.getById(tradeId).get();
@@ -123,12 +123,22 @@ public class TradeServiceImpl implements TradeService {
     }
 
     @Override
-    public Page<Trade> findAllByCurrencyPair(int pageNumber, String nameQuery) {
+    public Page<Trade> findAllByCurrencyPairArchive(int pageNumber, String currencyPair) {
         try {
             Pageable pageable = createPageable(pageNumber);
             List<TradeStatus> tradeStatuses = Arrays.asList(TradeStatus.COMPLETED_PLUS,
                     TradeStatus.COMPLETED_MINUS);
-            return tradeRepository.findAllByCurrencyPairAndTradeStatusIn(nameQuery, tradeStatuses, pageable);
+            return tradeRepository.findAllByCurrencyPairAndTradeStatusIn(currencyPair, tradeStatuses, pageable);
+        } catch (Exception e) {
+            throw new ServiceException("Currency pair not found!");
+        }
+    }
+
+    @Override
+    public Page<Trade> findAllByCurrencyPairList(int pageNumber, String currencyPair) {
+        try {
+            Pageable pageable = createPageable(pageNumber);
+            return tradeRepository.findAllByCurrencyPairAndTradeStatus(currencyPair, TradeStatus.ACTIVE, pageable);
         } catch (Exception e) {
             throw new ServiceException("Currency pair not found!");
         }

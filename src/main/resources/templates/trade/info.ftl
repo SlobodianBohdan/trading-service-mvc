@@ -87,12 +87,14 @@
             <a href="/trade/formUpdate/${trade.id}" class="rowButton ml-1">
                 <button class="btn btn-warning text-center" type="submit">Update trade</button>
             </a>
+            <#if trade.tradeStatus == "ACTIVE">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">In Archive</button>
+            </#if>
             <form class="rowButton ml-1" action="/trade/delete/${trade.id}" method="post" autocomplete="off">
-                <button class="btn btn-danger text-center" type="submit" >Delete</button>
+                <button class="btn btn-dark text-center" type="submit" >Delete</button>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
-            <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">In Archive</button>
         </div>
     </div>
 
@@ -107,7 +109,7 @@
                 <form action="/trade/archive/${trade.id}" method="post" autocomplete="off">
                         <table class="table table-hover">
                             <tr>
-                                <th class="align-middle col-md-12" scope="row">Expected Result:</th>
+                                <th class="align-middle col-md-7" scope="row">Expected Result:</th>
                                 <td class="td-padding">
                                     <label>
                                         <input name="expectedResult" type="text" value="${trade.expectedResult}">
@@ -115,7 +117,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <fieldset class="row justify-content-center tm-10 ">
+                        <fieldset class="row justify-content-center">
                             <button name="Submit" type="submit" class="btn btn-default" data-submit="...Sending">
                                 In Archive
                             </button>

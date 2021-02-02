@@ -14,7 +14,7 @@ public interface TradeService {
 
     void update(Trade trade);
 
-    void updateStatus(Long id, String result);
+    void changeStatusFotTrade(Long id, String result);
 
     List<Trade> getAll();
 
@@ -24,7 +24,9 @@ public interface TradeService {
 
     Page<Trade> getAllWithArchive(int pageNumber);
 
-    Page<Trade> findAllByCurrencyPair(int pageNumber, String nameQuery);
+    Page<Trade> findAllByCurrencyPairArchive(int pageNumber, String currencyPair);
+
+    Page<Trade> findAllByCurrencyPairList(int pageNumber, String currencyPair);
 
     void deleteTradeById(Long id);
 }

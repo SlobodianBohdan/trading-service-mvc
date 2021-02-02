@@ -1,4 +1,6 @@
 <#include "../include/header.ftl">
+<#assign pageSubmissionUrl = currencyPair???then('&currencyPair=${currencyPair}','') >
+
 <style>
     .btnCreate {
         display: flex;
@@ -6,6 +8,7 @@
         align-items: center;
         justify-content: center;
         margin-top: 2%;
+        margin-bottom: 2%;
     }
 
     .alert {
@@ -24,6 +27,22 @@
         </#if>
 
         <#if trades.totalPageNumber != 0 >
+            <div class="row">
+                <div class="input-group col text-center">
+                    <form action="/trade/findList" class="form-inline mx-auto">
+                        <#if currencyPair??>
+                            <a href="/trade/list" class="btn btn-secondary m-1">Reset</a>
+                        </#if>
+                        <input name="currencyPair" type="text" class="form-control" placeholder="Currency Pair"
+                               <#if trades.currencyPair??>value="${trades.currencyPair}"</#if>
+                               aria-label="Currency Pair" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-info" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div class="row justify-content-center" id="tradeList">
                 <#list trades.content as trade>
                     <div class="col-4 clearfix d-none d-md-block mt-4">
@@ -46,21 +65,23 @@
                     </div>
                 </#list>
             </div>
-            <div class="row justify-content-center">
-                <ul class="pagination">
-                    <li class="page-item  <#if !trades.hasPreviousPage >disabled</#if>">
-                        <a class="page-link" href="?page=${trades.currentPageNumber - 1}" tabindex="-1">Previous</a>
-                    </li>
-                    <#list 1..trades.totalPageNumber as pageNumber>
-                        <li class="page-item <#if trades.currentPageNumber == pageNumber>active</#if>">
-                            <a class="page-link" href="?page=${pageNumber}">${pageNumber}</a>
+            <#if trades.totalPageNumber gt 1 >
+                <div class="row justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item  <#if !trades.hasPreviousPage >disabled</#if>">
+                            <a class="page-link" href="?page=${trades.currentPageNumber - 1}${pageSubmissionUrl}" tabindex="-1">Previous</a>
                         </li>
-                    </#list>
-                    <li class="page-item <#if ! trades.hasNextPage >disabled</#if>">
-                        <a class="page-link" href="?page=${trades.currentPageNumber + 1}" tabindex="-1">Next</a>
-                    </li>
-                </ul>
-            </div>
+                        <#list 1..trades.totalPageNumber as pageNumber>
+                            <li class="page-item <#if trades.currentPageNumber == pageNumber>active</#if>">
+                                <a class="page-link" href="?page=${pageNumber}${pageSubmissionUrl}">${pageNumber}</a>
+                            </li>
+                        </#list>
+                        <li class="page-item <#if !trades.hasNextPage >disabled</#if>">
+                            <a class="page-link" href="?page=${trades.currentPageNumber + 1}${pageSubmissionUrl}" tabindex="-1">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </#if>
         <#else>
             <h1 class="text-center font-italic font-weight-bold font-family text-primary">THERE ARE CURRENTLY NO ACTIVE TRADES.</h1>
         </#if>
