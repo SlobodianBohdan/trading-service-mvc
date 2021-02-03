@@ -7,10 +7,14 @@
         margin-left: 7%;
         margin-right: 7%;
     }
+    .rowArchive{
+        margin-top: 1%;
+        margin-bottom: 2%;
+    }
 </style>
 <main>
         <h1 class="text-center font-italic font-weight-bold font-family">Archive Trades!</h1>
-        <div class="row">
+        <div class="rowArchive">
             <div class="input-group col text-center">
                 <form action="/trade/findArchive" class="form-inline mx-auto">
                     <#if currencyPair??>

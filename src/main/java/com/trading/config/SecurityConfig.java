@@ -11,8 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${app.adminPanelUrl}")
-    private String adminPanelUrl;
+    //@Value("${app.adminPanelUrl}")
+    private String adminPanelUrl = "admin";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -21,10 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/" + adminPanelUrl)
+                .defaultSuccessUrl("/")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/" + adminPanelUrl + "/**")
+                .antMatchers("/trade/" + adminPanelUrl + "/**")
                 .authenticated()
                 .and()
                 .authorizeRequests()

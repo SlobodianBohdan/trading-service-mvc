@@ -45,12 +45,12 @@ public class TradeController {
     }
 
     // Create Trade
-    @GetMapping("/formCreate")
+    @GetMapping("/admin/formCreate")
     public String getCreateForm() {
         return "trade/formCreate";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/admin/new")
     public String create(@Valid TradeDto tradeDto, RedirectAttributes redirectAttributes) {
         tradeService.create(mapper.toEntity(tradeDto));
         redirectAttributes.addFlashAttribute("message", "Created new Trade!");
@@ -58,14 +58,14 @@ public class TradeController {
     }
 
     // Update Trade
-    @GetMapping("/formUpdate/{tradeId}")
+    @GetMapping("/admin/formUpdate/{tradeId}")
     public String getUpdateForm(@PathVariable Long tradeId, Model model) {
         Trade trade = tradeService.getById(tradeId);
         model.addAttribute("trade", trade);
         return "/trade/formUpdate";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/admin/update")
     public String update(@Valid TradeDto tradeDto, RedirectAttributes redirectAttributes) {
         Trade trade = mapper.toEntity(tradeDto);
         tradeService.update(trade);
@@ -82,7 +82,7 @@ public class TradeController {
     }
 
     // Delete Trade
-    @PostMapping("/delete/{tradeId}")
+    @PostMapping("/admin/delete/{tradeId}")
     public String delete(@PathVariable Long tradeId, RedirectAttributes redirectAttributes) {
         tradeService.deleteTradeById(tradeId);
         redirectAttributes.addFlashAttribute("message", "Delete trade was successful!");
@@ -90,7 +90,7 @@ public class TradeController {
     }
 
     //Send in archive trade
-    @PostMapping("/archive/{tradeId}")
+    @PostMapping("/admin/archive/{tradeId}")
     public String sendInArchiveTrade(@PathVariable("tradeId") Long tradeId, @Valid ResultDto result, RedirectAttributes redirectAttributes) {
         tradeService.changeStatusFotTrade(tradeId, result.getExpectedResult());
         redirectAttributes.addFlashAttribute("message", "Trade sent to archive!");
@@ -107,7 +107,7 @@ public class TradeController {
     }
 
     @GetMapping("/findArchive")
-    public String findAllArchive (
+    public String findAllArchive(
             @RequestParam(name = "page", required = false, defaultValue = "1") int pageNumber,
             @RequestParam String currencyPair, Model model) {
         Page<Trade> tradesPage = tradeService.findAllByCurrencyPairArchive(pageNumber, currencyPair);
@@ -118,7 +118,7 @@ public class TradeController {
     }
 
     @GetMapping("/findList")
-    public String findAllList (
+    public String findAllList(
             @RequestParam(name = "page", required = false, defaultValue = "1") int pageNumber,
             @RequestParam String currencyPair, Model model) {
         Page<Trade> tradesPage = tradeService.findAllByCurrencyPairList(pageNumber, currencyPair);
@@ -126,5 +126,12 @@ public class TradeController {
         model.addAttribute("trades", trades);
         model.addAttribute("currencyPair", currencyPair);
         return "trade/list";
+    }
+
+    @GetMapping("/progress")
+    public String getProgress(Model model) {
+//        List<Trade> trades = tradeService.getAll();
+//        model.addAttribute("trades",trades);
+        return "trade/progress";
     }
 }

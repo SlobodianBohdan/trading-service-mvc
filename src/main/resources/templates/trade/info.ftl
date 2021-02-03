@@ -84,17 +84,19 @@
             <a href="/trade/list" class="rowButton ml-1">
                 <button class="btn btn-success text-center" type="submit">Go Back</button>
             </a>
-            <a href="/trade/formUpdate/${trade.id}" class="rowButton ml-1">
-                <button class="btn btn-warning text-center" type="submit">Update trade</button>
-            </a>
-            <#if trade.tradeStatus == "ACTIVE">
-            <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">In Archive</button>
-            </#if>
-            <form class="rowButton ml-1" action="/trade/delete/${trade.id}" method="post" autocomplete="off">
-                <button class="btn btn-dark text-center" type="submit" >Delete</button>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            </form>
+            <@sec.authorize access="isAuthenticated()">
+                <a href="/trade/formUpdate/${trade.id}" class="rowButton ml-1">
+                    <button class="btn btn-warning text-center" type="submit">Update trade</button>
+                </a>
+                <#if trade.tradeStatus == "ACTIVE">
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">In Archive</button>
+                </#if>
+                <form class="rowButton ml-1" action="/trade/delete/${trade.id}" method="post" autocomplete="off">
+                    <button class="btn btn-dark text-center" type="submit" >Delete</button>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                </form>
+            </@sec.authorize>
         </div>
     </div>
 

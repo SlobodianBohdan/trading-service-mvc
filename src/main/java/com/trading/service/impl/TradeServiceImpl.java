@@ -128,7 +128,7 @@ public class TradeServiceImpl implements TradeService {
             Pageable pageable = createPageable(pageNumber);
             List<TradeStatus> tradeStatuses = Arrays.asList(TradeStatus.COMPLETED_PLUS,
                     TradeStatus.COMPLETED_MINUS);
-            return tradeRepository.findAllByCurrencyPairAndTradeStatusIn(currencyPair, tradeStatuses, pageable);
+            return tradeRepository.findAllByCurrencyPairAndTradeStatusIn(currencyPair.toUpperCase(), tradeStatuses, pageable);
         } catch (Exception e) {
             throw new ServiceException("Currency pair not found!");
         }

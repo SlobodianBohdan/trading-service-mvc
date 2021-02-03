@@ -1,4 +1,5 @@
 <#include "../include/coreDependencies.ftl">
+<#assign sec=JspTaglibs["http://www.springframework.org/security/tags"]/>
 
 <html>
 <style>
@@ -44,11 +45,14 @@
         font-weight: bold;
 
     }
-    /*.top_nav a:hover{*/
-    /*    border-bottom: 3px solid #fcac45;*/
-    /*}*/
     .top_nav .icon{
         display: none;
+    }
+    .buttonLogOut{
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
     }
 
 
@@ -110,6 +114,12 @@
                 <a id="menu" class="icon">&#9776;</a>
             </div>
         </nav>
+        <@sec.authorize access="isAuthenticated()">
+            <form class="buttonLogOut" action="/trade/admin/logout" method="post" autocomplete="off">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">LogOut</button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </form>
+        </@sec.authorize>
     </header>
 <body>
 

@@ -11,7 +11,7 @@
 <div class="container">
     <div class="card mb-2">
         <div class="row justify-content-center mt-2">
-            <form action="/trade/new" method="post" autocomplete="off">
+            <form action="/trade/admin/new" method="post" autocomplete="off">
                 <h3 class="text-center font-italic font-weight-bold font-family">New Trade</h3>
                 <div class="col-12 block pt-2">
                     <table class="table table-hover">

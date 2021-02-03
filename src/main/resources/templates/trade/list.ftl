@@ -10,16 +10,21 @@
         margin-top: 2%;
         margin-bottom: 2%;
     }
-
     .alert {
         margin-top: 3%;
+    }
+    .rowList{
+      margin-top: 2%;
     }
 </style>
 <main>
     <div class="container">
-        <div class="btnCreate">
-            <a class="btn btn-warning" href="/trade/formCreate" role="button">Create New Trade</a>
-        </div>
+        <@sec.authorize access="isAuthenticated()">
+            <div class="btnCreate">
+                <a class="btn btn-warning" href="/trade/admin/formCreate" role="button">Create New Trade</a>
+            </div>
+        </@sec.authorize>
+
         <#if message??>
             <div class="alert alert-success" role="alert" id="dangerAlert">
                 ${message}
@@ -27,15 +32,15 @@
         </#if>
 
         <#if trades.totalPageNumber != 0 >
-            <div class="row">
+            <div class="rowList">
                 <div class="input-group col text-center">
                     <form action="/trade/findList" class="form-inline mx-auto">
                         <#if currencyPair??>
                             <a href="/trade/list" class="btn btn-secondary m-1">Reset</a>
                         </#if>
                         <input name="currencyPair" type="text" class="form-control" placeholder="Currency Pair"
-                               <#if trades.currencyPair??>value="${trades.currencyPair}"</#if>
-                               aria-label="Currency Pair" aria-describedby="basic-addon2">
+                            <#if trades.currencyPair??>value="${trades.currencyPair}"</#if>
+                            aria-label="Currency Pair" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="submit">Search</button>
                         </div>
