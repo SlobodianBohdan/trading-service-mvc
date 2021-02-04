@@ -46,7 +46,7 @@
     </#if>
     <div class="card mb-2">
         <div class="row justify-content-center">
-            <form action="/trade/update" method="post" autocomplete="off">
+            <form action="/trade/admin/update" method="post" autocomplete="off">
                 <h3 class="text-center font-italic font-weight-bold font-family">Update Trade</h3>
                 <div class="col-12 block pt-5">
                     <table class="table table-hover mb-0">

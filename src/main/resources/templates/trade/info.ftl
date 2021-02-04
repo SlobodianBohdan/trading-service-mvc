@@ -85,14 +85,14 @@
                 <button class="btn btn-success text-center" type="submit">Go Back</button>
             </a>
             <@sec.authorize access="isAuthenticated()">
-                <a href="/trade/formUpdate/${trade.id}" class="rowButton ml-1">
+                <a href="/trade/admin/formUpdate/${trade.id}" class="rowButton ml-1">
                     <button class="btn btn-warning text-center" type="submit">Update trade</button>
                 </a>
                 <#if trade.tradeStatus == "ACTIVE">
                 <!-- Trigger the modal with a button -->
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">In Archive</button>
                 </#if>
-                <form class="rowButton ml-1" action="/trade/delete/${trade.id}" method="post" autocomplete="off">
+                <form class="rowButton ml-1" action="/trade/admin/delete/${trade.id}" method="post" autocomplete="off">
                     <button class="btn btn-dark text-center" type="submit" >Delete</button>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>
@@ -108,7 +108,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Expected Result</h4>
                 </div>
-                <form action="/trade/archive/${trade.id}" method="post" autocomplete="off">
+                <form action="/trade/admin/archive/${trade.id}" method="post" autocomplete="off">
                         <table class="table table-hover">
                             <tr>
                                 <th class="align-middle col-md-7" scope="row">Expected Result:</th>

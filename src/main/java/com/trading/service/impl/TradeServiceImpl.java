@@ -3,7 +3,6 @@ package com.trading.service.impl;
 import com.trading.exception.ServiceException;
 import com.trading.model.Trade;
 import com.trading.model.TradeStatus;
-import com.trading.model.TradeTime;
 import com.trading.repository.TradeRepository;
 import com.trading.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class TradeServiceImpl implements TradeService {
 
     private TradeRepository tradeRepository;
 
-    private static final int PAGE_SIZE = 3;
+    private static final int PAGE_SIZE = 15;
     private static final Sort SORT = Sort.by("updatedDate").descending();
 
     @Autowired
@@ -36,7 +35,7 @@ public class TradeServiceImpl implements TradeService {
     public void create(Trade trade) {
         try {
             tradeRepository.save(trade);
-        } catch (Exception e) {
+        } catch (ServiceException e) {
             throw new ServiceException("Trade not created!");
         }
     }
@@ -138,7 +137,7 @@ public class TradeServiceImpl implements TradeService {
     public Page<Trade> findAllByCurrencyPairList(int pageNumber, String currencyPair) {
         try {
             Pageable pageable = createPageable(pageNumber);
-            return tradeRepository.findAllByCurrencyPairAndTradeStatus(currencyPair, TradeStatus.ACTIVE, pageable);
+            return tradeRepository.findAllByCurrencyPairAndTradeStatus(currencyPair.toUpperCase(), TradeStatus.ACTIVE, pageable);
         } catch (Exception e) {
             throw new ServiceException("Currency pair not found!");
         }

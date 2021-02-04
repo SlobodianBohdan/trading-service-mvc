@@ -70,7 +70,7 @@ public class TradeController {
         Trade trade = mapper.toEntity(tradeDto);
         tradeService.update(trade);
         redirectAttributes.addFlashAttribute("message", "Update this Trade!");
-        return String.format("redirect:/trade/formUpdate/%s", trade.getId());
+        return String.format("redirect:/trade/admin/formUpdate/%s", trade.getId());
     }
 
     // Info Trade
