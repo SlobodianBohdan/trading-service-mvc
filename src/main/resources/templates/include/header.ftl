@@ -10,6 +10,9 @@
     }
     body{
         font-family: 'Open Sans', sans-serif;
+        flex-direction: column;
+        display: flex;
+        min-height: 100vh;
     }
 
     .aHeader{
@@ -109,7 +112,7 @@
                 <a class="aHeader" href="/">Home</a>
                 <a class="aHeader" href="/trade/list">Trades</a>
                 <a class="aHeader" href="/trade/archive">Archive</a>
-                <a class="aHeader" href="#">Fond</a>
+<#--                <a class="aHeader" href="#">Fond</a>-->
                 <a class="aHeader" href="/trade/progress">Progress</a>
                 <a id="menu" class="icon">&#9776;</a>
             </div>

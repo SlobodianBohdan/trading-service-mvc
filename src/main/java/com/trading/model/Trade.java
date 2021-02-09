@@ -39,6 +39,7 @@ public class Trade {
     @Enumerated(EnumType.STRING)
     private TradeTime tradeTime;
     @NonNull
+    @Column(columnDefinition="TEXT")
     private String description;
     @Column(columnDefinition="text")
     private String mediaLink;

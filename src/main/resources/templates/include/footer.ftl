@@ -8,6 +8,7 @@
             background: #000000;
             width: 100%;
             height: 120px;
+            margin-top: auto;
         }
         .ulFooter{
             display: flex;

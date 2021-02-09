@@ -7,12 +7,14 @@
         margin-left: 7%;
         margin-right: 7%;
     }
-    .rowArchive{
+
+    .rowArchive {
         margin-top: 1%;
         margin-bottom: 2%;
     }
 </style>
 <main>
+    <#if trades.totalPageNumber != 0 >
         <h1 class="text-center font-italic font-weight-bold font-family">Archive Trades!</h1>
         <div class="rowArchive">
             <div class="input-group col text-center">
@@ -29,6 +31,7 @@
                 </form>
             </div>
         </div>
+
         <div class="archiveTrade">
             <table border="2" class="table <#if trades??>table <#else> table-dark </#if>">
                 <thead class="<#if trades??>thead-dark <#else> thead </#if>">
@@ -86,5 +89,14 @@
                 </ul>
             </div>
         </#if>
+    <#else>
+        <#if currencyPair??>
+            <h1 class="text-center font-italic font-weight-bold font-family text-primary">NOT FOUND TRADES WITH THIS
+                CURRENCY PAIR IN ARCHIVE.</h1>
+        <#else>
+            <h1 class="text-center font-italic font-weight-bold font-family text-primary">THERE ARE CURRENTLY NO ARCHIVE
+                TRADES.</h1>
+        </#if>
+    </#if>
 </main>
 <#include "../include/footer.ftl">

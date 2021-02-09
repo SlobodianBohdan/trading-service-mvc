@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="coinMarketUrl">
             <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinMarquee.js"></script>
             <div class="listCrypto" id="coinmarketcap-widget-marquee" coins="1,1027,52,2,1831" currency="USD" theme="dark" transparent="false" show-symbol-logo="true">
             </div>

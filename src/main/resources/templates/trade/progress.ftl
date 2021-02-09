@@ -22,7 +22,7 @@
     <main>
         <div class="container">
             <div class="textProgress">
-                <h1 class="text-center font-italic font-weight-bold font-family">Trades Progress!</h1>            </div>
+                <h1 class="text-center font-italic font-weight-bold font-family">Progress of my trades since 2017 in percent!</h1>            </div>
             <div class="chart" id="myfirstchart"></div>
         </div>
     </main>

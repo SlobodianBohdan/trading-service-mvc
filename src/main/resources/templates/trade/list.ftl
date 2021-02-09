@@ -13,8 +13,8 @@
     .alert {
         margin-top: 3%;
     }
-    .rowList{
-      margin-top: 2%;
+    .rowList {
+        margin-top: 2%;
     }
 </style>
 <main>
@@ -39,8 +39,8 @@
                             <a href="/trade/list" class="btn btn-secondary m-1">Reset</a>
                         </#if>
                         <input name="currencyPair" type="text" class="form-control" placeholder="Currency Pair"
-                            <#if trades.currencyPair??>value="${trades.currencyPair}"</#if>
-                            aria-label="Currency Pair" aria-describedby="basic-addon2">
+                               <#if trades.currencyPair??>value="${trades.currencyPair}"</#if>
+                               aria-label="Currency Pair" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="submit">Search</button>
                         </div>
@@ -54,9 +54,11 @@
                         <div class="card mb-2 zoom">
                             <a href="/trade/info/${trade.id}">
                                 <#if trade.mediaLink??>
-                                    <img class="card-img-top card-item-img" src="${trade.mediaLink}" alt="mediaLinkPhoto">
+                                    <img class="card-img-top card-item-img" src="${trade.mediaLink}"
+                                         alt="mediaLinkPhoto">
                                 <#else>
-                                    <img class="card-img-top card-item-img" src="https://pixy.org/src/120/1206832.jpg" alt="additionalPhoto">
+                                    <img class="card-img-top card-item-img" src="https://pixy.org/src/120/1206832.jpg"
+                                         alt="additionalPhoto">
                                 </#if>
                             </a>
                             <div class="card-body">
@@ -74,7 +76,8 @@
                 <div class="row justify-content-center">
                     <ul class="pagination">
                         <li class="page-item  <#if !trades.hasPreviousPage >disabled</#if>">
-                            <a class="page-link" href="?page=${trades.currentPageNumber - 1}${pageSubmissionUrl}" tabindex="-1">Previous</a>
+                            <a class="page-link" href="?page=${trades.currentPageNumber - 1}${pageSubmissionUrl}"
+                               tabindex="-1">Previous</a>
                         </li>
                         <#list 1..trades.totalPageNumber as pageNumber>
                             <li class="page-item <#if trades.currentPageNumber == pageNumber>active</#if>">
@@ -82,13 +85,18 @@
                             </li>
                         </#list>
                         <li class="page-item <#if !trades.hasNextPage >disabled</#if>">
-                            <a class="page-link" href="?page=${trades.currentPageNumber + 1}${pageSubmissionUrl}" tabindex="-1">Next</a>
+                            <a class="page-link" href="?page=${trades.currentPageNumber + 1}${pageSubmissionUrl}"
+                               tabindex="-1">Next</a>
                         </li>
                     </ul>
                 </div>
             </#if>
         <#else>
-            <h1 class="text-center font-italic font-weight-bold font-family text-primary">THERE ARE CURRENTLY NO ACTIVE TRADES.</h1>
+            <#if currencyPair??>
+                <h1 class="text-center font-italic font-weight-bold font-family text-primary">NOT FOUND TRADES WITH THIS CURRENCY PAIR.</h1>
+            <#else>
+                <h1 class="text-center font-italic font-weight-bold font-family text-primary">THERE ARE CURRENTLY NO ACTIVE TRADES.</h1>
+            </#if>
         </#if>
     </div>
 </main>
