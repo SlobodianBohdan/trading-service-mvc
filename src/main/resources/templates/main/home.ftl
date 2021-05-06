@@ -10,9 +10,9 @@
     }
 
     .main .main_welcome {
-        background: #000;
+        background: #FBE5CD;
         text-align: center;
-        padding: 200px 0 300px 0;
+        padding: 250px 0 300px 0;
     }
 
     .main_welcome p {
@@ -21,7 +21,7 @@
     }
 
     .main .main_welcome h1 {
-        color: #999999;
+        color: #000;
         font-size: 44px;
     }
 

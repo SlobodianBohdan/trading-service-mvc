@@ -1,4 +1,4 @@
-
+</body>
     <style>
         .footer{
             display: flex;
@@ -15,7 +15,6 @@
             margin-top: 10px;
         }
         .ulFooter .liFooter{
-            position: relative;
             display: block;
             color: #666;
             font-size: 30px;
@@ -127,5 +126,4 @@
             }
         }
     </script>
-    </body>
 </html>
