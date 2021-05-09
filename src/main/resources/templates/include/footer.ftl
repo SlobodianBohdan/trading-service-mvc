@@ -100,20 +100,23 @@
             box-shadow: 0 0 15px #ff0000;
             text-shadow: 0 0 15px #ff0000;
         }
-        .fab{
-            margin-top: 15px;
+        .fa{
+            margin-top: 19%;
+            font-size: 120%;
+            color: #0747f1;
         }
     </style>
 
-    <footer class="footer">
-            <ul class="ulFooter">
-                <li class="liFooter"><a href="#" class="fab fa-facebook-f" target="_blank"></a></li>
-                <li class="liFooter"><a href="#" class="fab fa-twitter" target="_blank"></a></li>
-                <li class="liFooter"><a href="#" class="fab fa-instagram" target="_blank"></a></li>
-                <li class="liFooter"><a href="https://t.me/igorjkeeee" class="fab fa-telegram" target="_blank"></a></li>
-                <li class="liFooter"><a href="#" class="fab fa-youtube" target="_blank"></a></li>
-            </ul>
-    </footer>
+
+<footer class="footer">
+    <ul class="ulFooter">
+        <li class="liFooter"><a href="#" class="fa fa-facebook-square" target="_blank"></a></li>
+        <li class="liFooter"><a href="#" class="fa fa-twitter-square" target="_blank"></a></li>
+        <li class="liFooter"><a href="#" class="fa fa-instagram" target="_blank"></a></li>
+        <li class="liFooter"><a href="https://t.me/igorjkeeee" class="fa fa-telegram" target="_blank"></a></li>
+        <li class="liFooter"><a href="#" class="fa fa-youtube-square" target="_blank"></a></li>
+    </ul>
+</footer>
 
     <script>
         menu.onclick = function myFunction() {
